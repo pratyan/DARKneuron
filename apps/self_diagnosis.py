@@ -106,8 +106,8 @@ def render_diagnosis_page():
 
         #upload button
         if st.button('Upload'):
-             Upload("Pratyan Majumder", ["Cough", "Cold"], "Cold")
-             st.write("Report Uploaded to the Blockchain!")
+             Upload("Pratyan Majumder", data, get_disease[predict(model,data)[0]])
+             st.write("Report Uploaded to the Blockchain !")
     
 
 def app():
