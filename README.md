@@ -26,4 +26,5 @@ EASY AND EFFICIENT
 * Language: Python, solidity
 * Framework: Scikit-learn,Tensorflow for model building
 * Web application using Streamlit library (multiapp model)
+* Web3 compatibility using Web3.py
 * Blockchain: Ganache-cli
