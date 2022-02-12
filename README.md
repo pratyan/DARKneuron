@@ -23,7 +23,7 @@ EASY AND EFFICIENT
 
 
 ### **Technologies used**
-* Language: Python
+* Language: Python, solidity
 * Framework: Scikit-learn,Tensorflow for model building
 * Web application using Streamlit library (multiapp model)
-* Blockchain development 
+* Blockchain: Ganache-cli
