@@ -28,3 +28,9 @@ EASY AND EFFICIENT
 * Web application using Streamlit library (multiapp model)
 * Web3 compatibility using Web3.py
 * Blockchain: Ganache-cli
+
+### **Images of the working model**
+![img1](https://user-images.githubusercontent.com/76741905/153718759-da678fe5-7276-4b38-b202-be81397ce49a.png)
+
+
+![img2](https://user-images.githubusercontent.com/76741905/153718779-c0de7584-2cea-456a-9e70-1f4b51326fc5.png)
