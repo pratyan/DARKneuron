@@ -61,7 +61,7 @@ def app():
             #Access button
             if st.button("Give Access To Your Reports"):
                 #1
-                store_transaction = contract.functions.giveAccess(doctor_address).buildTransaction(
+                store_transaction = contract.functions.giveAccess(my_address).buildTransaction(
                         {"chainId":chain_id, "from":my_address, "nonce":nonce+1}
                     ) #"nonce" =+1 since after the declaration of the variable we have done one transaction
                 #2
