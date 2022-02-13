@@ -11,7 +11,6 @@ private_key = '0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1
 
 doctor_address = '0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0'
 doctor_key = '0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1d'
-nonce = w3.eth.getTransactionCount(my_address) #Basically the number of transaction by the curent accnt
 
 #contract object
 contract_address = '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab'
@@ -60,6 +59,8 @@ def app():
 
             #Access button
             if st.button("Give Access To Your Reports"):
+                nonce = w3.eth.getTransactionCount(my_address)-1 #Basically the number of transaction by the curent accnt
+
                 #1
                 store_transaction = contract.functions.giveAccess(my_address).buildTransaction(
                         {"chainId":chain_id, "from":my_address, "nonce":nonce+1}
