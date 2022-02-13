@@ -37,9 +37,12 @@ def app():
 
     if pending:
         st.subheader("Schedule a meeting here..")
-        st.text_input("Date:")
-        st.text_input("Time:")
-        st.button("Schedule")
+        date = st.text_input("Date:")
+        time = st.text_input("Time:")
+        if st.button("Schedule"):
+            db.create_appointmenttable()
+            db.add_appointment(username,patientname,date,time)
+            st.subheader("Appointment scheduled with {} at date: {} ,time: {}".format(patientname,date,time))
 
     if st.button("Get Patient's Reports"):
         try:
