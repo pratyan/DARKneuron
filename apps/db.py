@@ -11,6 +11,8 @@ import sqlite3
 conn = sqlite3.connect('data.db',check_same_thread=False)
 c = conn.cursor()
 # DB  Functions
+
+# Patients-------------------------------------------------------------------------------------------------------------------------
 def create_usertable():
 	c.execute('CREATE TABLE IF NOT EXISTS userstable(username TEXT,password TEXT,doctorname TEXT)')
 
@@ -31,10 +33,11 @@ def get_doctorname(username):
 	c.execute('SELECT * FROM userstable WHERE username = ?',(username,))
 	data = c.fetchall()
 	return data[0][2]
+#-----------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-
+#Doctor----------------------------------------------------------------------------------------------------------------------------------------------
 def create_doctortable():
 	c.execute('CREATE TABLE IF NOT EXISTS doctorstable(username TEXT,password TEXT,specialization TEXT,patientname TEXT)')
 
@@ -57,7 +60,27 @@ def get_patientname(username):
 	c.execute('SELECT * FROM doctorstable WHERE username = ?',(username,))
 	data = c.fetchall()
 	return data[0][3]
+#-----------------------------------------------------------------------------------------------------------------------------------
 
+
+#Appointments---------------------------------------------------------------------------------------------
+def create_appointmenttable():
+	c.execute('CREATE TABLE IF NOT EXISTS appointmentstable(doctorname TEXT,patientname TEXT,date TEXT,time TEXT)')
+
+def add_appointment(doctorname,patientname,date,time):
+	c.execute('INSERT INTO appointmentstable(doctorname,patientname,date,time) VALUES (?,?,?,?)',(doctorname,patientname,date,time))
+	conn.commit()
+
+def get_appointment_patient(patientname):
+	c.execute('SELECT * FROM appointmentstable WHERE patientname = ?',(patientname,))
+	data = c.fetchall()
+	return data[0][2],data[0][3]
+
+def get_appointment_doctor(doctorname):
+	c.execute('SELECT * FROM appointmentstable WHERE patientname = ?',(doctorname,))
+	data = c.fetchall()
+	return data[0][2],data[0][3]
+#---------------------------------------------------------------------------------------------------------------------
 
 
 def view_all_doctors():
