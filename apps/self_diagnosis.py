@@ -10,7 +10,6 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
 chain_id = 1337
 my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
 private_key = '0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1d'
-nonce = w3.eth.getTransactionCount(my_address) -1 #Basically the number of transaction by the curent accnt
 
 #contract object
 contract_address = '0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab'
@@ -54,7 +53,7 @@ def create_disease_hash():
     return disease_hash,get_disease
 
 #Upload button
-def Upload(name, symptoms, prediction):
+def Upload(name, symptoms, prediction, nonce):
 
     #1
     store_transaction = contract.functions.upload(name, symptoms, prediction).buildTransaction(
@@ -70,6 +69,9 @@ def Upload(name, symptoms, prediction):
 
 
 def render_diagnosis_page(username):
+    nonce = w3.eth.getTransactionCount(my_address) -1 #Basically the number of transaction by the curent accnt
+
+
     m = '<h1 style="text-align:center">SELF DIAGNOSIS</h1>'
     st.markdown(m,unsafe_allow_html=True)
     m = '<h4 style="text-align:center">Enter your symptoms to get predictions</h4>'
@@ -106,7 +108,7 @@ def render_diagnosis_page(username):
 
         #upload button
         if st.button('Upload'):
-             Upload(username, data, get_disease[predict(model,data)[0]])
+             Upload(username, data, get_disease[predict(model,data)[0]], nonce)
              st.success("Report Uploaded to the Blockchain !")
     
 
