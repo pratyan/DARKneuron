@@ -69,7 +69,7 @@ def Upload(name, symptoms, prediction):
 
 
 
-def render_diagnosis_page():
+def render_diagnosis_page(username):
     m = '<h1 style="text-align:center">SELF DIAGNOSIS</h1>'
     st.markdown(m,unsafe_allow_html=True)
     m = '<h4 style="text-align:center">Enter your symptoms to get predictions</h4>'
@@ -106,14 +106,14 @@ def render_diagnosis_page():
 
         #upload button
         if st.button('Upload'):
-             Upload("Pratyan Majumder", data, get_disease[predict(model,data)[0]])
+             Upload(username, data, get_disease[predict(model,data)[0]])
              st.success("Report Uploaded to the Blockchain !")
     
 
 def app():
     logged_in_as_doctor,logged_in_as_patient,username = login.app()
     if logged_in_as_patient:
-        render_diagnosis_page()
+        render_diagnosis_page(username)
     elif logged_in_as_doctor:
         st.warning("You are not logged in as patient!")
     else:
