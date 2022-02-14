@@ -1,6 +1,8 @@
 # **Click-A-Clinic**
 ### **By DARKneuron**
 
+[Link for web application](https://share.streamlit.io/sharadsaha/click-a-clinic/main/app.py)
+
 **OUR IDEA IS :**
 
 * TO MAKE SELF DIAGNOSIS FOR PATIENTS EASIER THAN 
